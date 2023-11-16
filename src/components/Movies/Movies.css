@@ -1,0 +1,41 @@
+.movies {
+  display: flex;
+  flex-direction: column;
+}
+
+.movies__block {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.movies__button-add-cards {
+  width: 320px;
+  height: 36px;
+  border-radius: 6px;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 14.52px;
+  text-align: center;
+  margin: 81px 410px;
+  background-color: #f9f9f9;
+  border: none;
+  cursor: pointer;
+  transition: opacity 0.6s;
+}
+
+.movies__button-add-cards:hover {
+  opacity: 0.8;
+}
+
+@media screen and (max-width: 768px) {
+  .movies__button-add-cards {
+    margin: 65px 222px 78px;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .movies__button-add-cards {
+    margin: 34px 40px 150px;
+  }
+}

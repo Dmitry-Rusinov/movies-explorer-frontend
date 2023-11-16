@@ -1,0 +1,156 @@
+.login-form {
+  display: flex;
+  flex-direction: column;
+  margin: 70px auto;
+  width: 396px;
+  border: none;
+}
+
+@media screen and (max-width: 768px) {
+  .login-form {
+    margin: 232px auto;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .login-form {
+    margin: 56px auto;
+    width: 260px;
+  }
+}
+
+.login-form__greeting {
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 29px;
+  margin: 40px 0;
+  padding: 0;
+}
+
+@media screen and (max-width: 320px) {
+  .login-form__greeting {
+    align-self: center;
+    margin: 50px 0;
+  }
+}
+
+.login-form__input-container {
+  display: flex;
+  flex-direction: column;
+  margin: 0 0 70px;
+  padding: 0;
+  border: none;
+}
+
+@media screen and (max-width: 320px) {
+  .login-form__input-container {
+    margin: 30px 0;
+  }
+}
+
+.login-form__input {
+  display: flex;
+  flex-direction: column;
+}
+
+.login-form__input-name {
+  font-weight: 400;
+  font-size: 10px;
+  line-height: 12px;
+  margin: 0;
+  padding: 0;
+}
+
+.login-form__input-value {
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 15.7px;
+  height: 46px;
+  margin-top: 10px;
+  padding: 0 0 0 15px;
+  border: none;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+}
+
+.login-form__error {
+  color: #ff4062;
+  font-weight: 400;
+  font-size: 10px;
+  line-height: 12px;
+  margin: 8px 0 0 0;
+  padding: 0;
+  height: 12px;
+}
+
+.login-form__button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  background-color: black;
+  height: 45px;
+  border-radius: 3px;
+  cursor: pointer;
+  border: none;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 17px;
+  margin: 0;
+  padding: 0;
+  transition: opacity 0.6s;
+}
+
+.login-form__button:hover {
+  opacity: 0.8;
+}
+
+@media screen and (max-width: 320px) {
+  .login-form__button {
+    margin: 90px 0 0;
+    font-size: 12px;
+    line-height: 14.52px;
+  }
+}
+
+.login-form__link {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 17px;
+  margin: 0;
+  padding: 0;
+  text-decoration-line: none;
+  color: black;
+  transition: opacity 0.6s;
+}
+
+.login-form__link:nth-child(2):hover {
+  cursor: pointer;
+  opacity: 0.7;
+}
+
+@media screen and (max-width: 320px) {
+  .login-form__link {
+    font-size: 12px;
+    line-height: 14.52px;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .login-form__logo {
+    align-self: center;
+  }
+}
+
+.login-form__login-block {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin-top: 17px;
+}
+
+@media screen and (max-width: 320px) {
+  .login-form__login-block {
+    margin-top: 14px;
+  }
+}
