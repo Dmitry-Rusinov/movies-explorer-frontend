@@ -11,7 +11,7 @@ export default function ProfileForm() {
       <h4 className="profile-form__greeting">{`Привет, ${user.name}!`}</h4>
       <fieldset className="profile-form__input-container">
         <label className="profile-form__input">
-          <p className="profile-form__input-name">Имя</p>
+          <span className="profile-form__input-name">Имя</span>
           <input
             className="profile-form__input-value"
             type="text"
@@ -22,7 +22,7 @@ export default function ProfileForm() {
         </label>
         <span className="profile-form__back-line"></span>
         <label className="profile-form__input">
-          <p className="profile-form__input-name">E-mail</p>
+          <span className="profile-form__input-name">E-mail</span>
           <input
             className="profile-form__input-value"
             type="text"

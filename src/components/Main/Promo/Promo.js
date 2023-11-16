@@ -1,7 +1,7 @@
 import React from "react";
 import Header from "../../Header/Header";
 import "./Promo.css";
-import promoLogo from "../../../images/Promo_landing-logo.png";
+import promoLogo from "../../../images/Promo_landing-logo.svg";
 
 export default function Promo({ loggedIn }) {
   return (

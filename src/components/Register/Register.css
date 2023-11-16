@@ -12,14 +12,14 @@
   }
 }
 
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 425px) {
   .register-form {
     width: 260px;
     margin: 56px auto 10px;
   }
 }
 
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 425px) {
   .register-form__logo {
     align-self: center;
   }
@@ -33,7 +33,7 @@
   padding: 0;
 }
 
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 425px) {
   .register-form__greeting {
     align-self: center;
     margin: 50px 0;
@@ -48,7 +48,7 @@
   border: none;
 }
 
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 425px) {
   .register-form__input-container {
     margin: 30px 0;
   }
@@ -93,7 +93,7 @@
   height: 12px;
 }
 
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 425px) {
   .register-form__error {
     margin: 9px 0 0 0;
   }
@@ -121,7 +121,7 @@
   opacity: 0.8;
 }
 
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 425px) {
   .register-form__button {
     margin: 127px 0 0;
     font-size: 12px;
@@ -138,7 +138,7 @@
   padding: 0;
 }
 
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 425px) {
   .register-form__question {
     font-size: 12px;
     line-height: 14.52px;
@@ -161,7 +161,7 @@
   opacity: 0.7;
 }
 
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 425px) {
   .register-form__link {
     font-size: 12px;
     line-height: 14.52px;
@@ -175,7 +175,7 @@
   margin-top: 17px;
 }
 
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 425px) {
   .register-form__login-block {
     margin-top: 14px;
   }

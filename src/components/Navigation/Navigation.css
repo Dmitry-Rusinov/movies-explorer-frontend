@@ -31,7 +31,7 @@
 }
 
 .nav__button-profile {
-  background-image: url(../../images/icon-main-profile-pink.png);
+  background-image: url(../../images/icon-main-profile-pink.svg);
   width: 30px;
   height: 30px;
   background-color: black;
@@ -211,7 +211,7 @@
     position: fixed;
     top: 0;
     left: 768px;
-    width: 520px;
+    width: 68%;
     height: 100%;
     transition: 0.3s;
     box-sizing: border-box;
@@ -223,9 +223,9 @@
   }
 }
 
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 425px) {
   .nav__links {
-    width: 320px;
+    width: 100%;
   }
 }
 
@@ -338,7 +338,7 @@
 @media screen and (max-width: 768px) {
   .burger-shower:checked + .nav__container .nav__links {
     visibility: visible;
-    left: 248px;
+    left: 32%;
   }
   .burger-shower:checked ~ .overlay {
     visibility: visible;
@@ -350,7 +350,7 @@
   }
 }
 
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 425px) {
   .burger-shower:checked + .nav__container .nav__links {
     visibility: visible;
     left: 0;

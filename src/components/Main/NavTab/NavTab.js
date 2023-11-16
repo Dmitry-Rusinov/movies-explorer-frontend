@@ -3,14 +3,14 @@ import "./NavTab.css";
 
 export default function NavTab() {
   return (
-    <nav className="navTab">
-      <a className="navTab__link" href="#about-project">
+    <nav className="nav-tab">
+      <a className="nav-tab__link" href="#about-project">
         О проекте
       </a>
-      <a className="navTab__link" href="#techs">
+      <a className="nav-tab__link" href="#techs">
         Технологии
       </a>
-      <a className="navTab__link" href="#about-me">
+      <a className="nav-tab__link" href="#about-me">
         Студент
       </a>
     </nav>

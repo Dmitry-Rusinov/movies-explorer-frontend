@@ -3,37 +3,43 @@ import "./Portfolio.css";
 
 export default function Portfolio() {
   return (
-    <section className="portfolio">
+    <article className="portfolio">
       <h4 className="portfolio__text">Портфолио</h4>
       <ul className="portfolio__list">
-        <li className="portfolio__block">
+        <li>
           <a
             className="portfolio__link"
             href="https://github.com/Dmitry-Rusinov/how-to-learn"
+            target="_blank"
+            rel="noreferrer"
           >
             Статичный сайт
+          <span>↗</span>
           </a>
-          <span className="portfolio__arrow">↗</span>
         </li>
-        <li className="portfolio__block">
+        <li>
           <a
             className="portfolio__link"
             href="https://dmitry-rusinov.github.io/russian-travel/"
+            target="_blank"
+            rel="noreferrer"
           >
             Адаптивный сайт
+          <span>↗</span>
           </a>
-          <span className="portfolio__arrow">↗</span>
         </li>
-        <li className="portfolio__block">
+        <li>
           <a
             className="portfolio__link"
             href="https://mesto-rus.students.nomoredomainsrocks.ru/"
+            target="_blank"
+            rel="noreferrer"
           >
             Одностраничное приложение
+          <span>↗</span>
           </a>
-          <span className="portfolio__arrow">↗</span>
         </li>
       </ul>
-    </section>
+    </article>
   );
 }

@@ -1,4 +1,4 @@
-.seach {
+.search {
   display: flex;
   flex-direction: row;
   height: 72px;
@@ -9,31 +9,31 @@
 }
 
 @media screen and (max-width: 768px) {
-  .seach {
+  .search {
     margin: 80px 30px;
   }
 }
 
 @media screen and (max-width: 600px) {
-  .seach {
+  .search {
     margin: 80px 50px;
     flex-direction: column;
   }
 }
 
 @media screen and (max-width: 425px) {
-  .seach {
+  .search {
     margin: 80px 30px;
   }
 }
 
 @media screen and (max-width: 320px) {
-  .seach {
+  .search {
     margin: 80px 10px;
   }
 }
 
-.seach__form {
+.search__form {
   display: flex;
   align-items: center;
   border-right: 1px solid #cbcbcb;
@@ -41,42 +41,36 @@
 }
 
 @media screen and (max-width: 768px) {
-  .seach__form {
+  .search__form {
     width: 486px;
     margin: 0 15px;
   }
 }
 
 @media screen and (max-width: 600px) {
-  .seach__form {
-    width: 350px;
+  .search__form {
+    width: 100%;
     margin: 15px;
     border-right: none;
   }
 }
 
-@media screen and (max-width: 425px) {
-  .seach__form {
-    width: 310px;
-  }
-}
-
 @media screen and (max-width: 320px) {
-  .seach__form {
+  .search__form {
     width: 290px;
   }
 }
 
-.seach__icon {
+.search__icon {
   margin-left: 20px;
   width: 34px;
   height: 34px;
-  background-image: url(../../../images/seach-icon.png);
+  background-image: url(../../../images/search-icon.svg);
   background-position: center;
 }
 
 @media screen and (max-width: 768px) {
-  .seach__icon {
+  .search__icon {
     margin-left: 4px;
     width: 34px;
     height: 34px;
@@ -84,37 +78,36 @@
 }
 
 @media screen and (max-width: 600px) {
-  .seach__icon {
+  .search__icon {
     width: 0;
     height: 0;
     background-image: none;
   }
 }
 
-.seach__input {
+.search__input {
   font-weight: 400;
   font-size: 18px;
   line-height: 20px;
-  width: 40vw;
+  width: 59%;
   border: none;
   margin-left: 10px;
   padding: 0;
 }
 
-@media screen and (max-width: 1279px) {
-  .seach__input {
-    width: 59%;
-    margin-left: 10px;
-  }
-}
-
 @media screen and (max-width: 600px) {
-  .seach__input {
+  .search__input {
     font-size: 14px;
   }
 }
 
-.seach__submit {
+@media screen and (max-width: 320px) {
+  .search__input {
+    width: 190px;
+  }
+}
+
+.search__submit {
   background-color: black;
   color: white;
   background-position: center;
@@ -132,49 +125,55 @@
   transition: opacity 0.6s;
 }
 
-.seach__submit:hover {
+.search__submit:hover {
   opacity: 0.8;
 }
 
-.seach__block {
+.search__block {
   display: flex;
   width: 100px;
   height: 40px;
   align-items: center;
   justify-content: center;
-  margin-left: 237px;
+  margin-left: 25%;
 }
 
 @media screen and (max-width: 768px) {
-  .seach__block {
+  .search__block {
     margin-left: 52px;
   }
 }
 
 @media screen and (max-width: 600px) {
-  .seach__block {
-    margin-left: 32px;
+  .search__block {
+    margin-left: 17%;
   }
 }
 
-.seach__short-film {
-  background-image: url(../../../images/smalltumboff.png);
+@media screen and (max-width: 320px) {
+  .search__block {
+    margin-left: 0;
+  }
+}
+
+.search__short-film {
+  background-image: url(../../../images/tumbler-off.svg);
   font-weight: 400;
   font-size: 13px;
   line-height: 18px;
 }
 
-.seach__short-film:active {
-  background-image: url(../../../images/smalltumb.png);
+.search__short-film:active {
+  background-image: url(../../../images/tumbler-on.svg);
 }
 
-.seach__back-line {
+.search__back-line {
   border-bottom: 1px solid #e8e8e8;
   margin: 0 70px 9px;
 }
 
 @media screen and (max-width: 768px) {
-  .seach__back-line {
+  .search__back-line {
     margin: 29px 30px 0;
   }
 }

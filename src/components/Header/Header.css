@@ -30,3 +30,11 @@
     padding: 0 14px;
   }
 }
+
+.header__logo {
+  transition: opacity 0.6s;
+}
+
+.header__logo:hover {
+  opacity: 0.7;
+}

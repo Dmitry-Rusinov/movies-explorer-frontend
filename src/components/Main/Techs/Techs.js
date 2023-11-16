@@ -3,10 +3,10 @@ import "./Techs.css";
 
 export default function Techs() {
   return (
-    <section className="techs" id="techs">
-      <h2 className="techs__text">Технологии</h2>
+    <article className="techs" id="techs">
+      <h3 className="techs__text">Технологии</h3>
       <span className="techs__line"></span>
-      <h3 className="techs__text-head">7 технологий</h3>
+      <h4 className="techs__text-head">7 технологий</h4>
       <p className="techs__text-descript">
         На курсе веб-разработки мы освоили технологии, которые применили в
         дипломном проекте.
@@ -20,6 +20,6 @@ export default function Techs() {
         <li className="techs__technology">Express.js</li>
         <li className="techs__technology">mongoDB</li>
       </ul>
-    </section>
+    </article>
   );
 }

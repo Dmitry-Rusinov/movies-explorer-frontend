@@ -12,10 +12,20 @@ export default function Footer() {
       <div className="footer__links">
         <p className="footer__text">©&thinsp;2023</p>
         <nav className="footer__nav-block">
-          <a className="footer__text" href="https://practicum.yandex.ru/">
+          <a
+            className="footer__text"
+            href="https://practicum.yandex.ru/"
+            target="_blank"
+            rel="noreferrer"
+          >
             Яндекс.Практикум
           </a>
-          <a className="footer__text" href="https://github.com/">
+          <a
+            className="footer__text"
+            href="https://github.com/"
+            target="_blank"
+            rel="noreferrer"
+          >
             Github
           </a>
         </nav>

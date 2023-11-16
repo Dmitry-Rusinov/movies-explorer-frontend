@@ -5,7 +5,7 @@ import { useLocation } from "react-router-dom";
 export default function MoviesCard({ card }) {
   const location = useLocation().pathname;
   return (
-    <div className="card">
+    <section className="card">
       <img src={card.link} alt={card.name} className="card__picture" />
       <button
         type="button"
@@ -22,6 +22,6 @@ export default function MoviesCard({ card }) {
           <span className="card__duration">{card.duration}</span>
         </div>
       </div>
-    </div>
+    </section>
   );
 }

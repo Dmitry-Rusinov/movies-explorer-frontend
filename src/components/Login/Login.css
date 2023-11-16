@@ -12,7 +12,7 @@
   }
 }
 
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 425px) {
   .login-form {
     margin: 56px auto;
     width: 260px;
@@ -27,7 +27,7 @@
   padding: 0;
 }
 
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 425px) {
   .login-form__greeting {
     align-self: center;
     margin: 50px 0;
@@ -42,7 +42,7 @@
   border: none;
 }
 
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 425px) {
   .login-form__input-container {
     margin: 30px 0;
   }
@@ -105,7 +105,7 @@
   opacity: 0.8;
 }
 
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 425px) {
   .login-form__button {
     margin: 90px 0 0;
     font-size: 12px;
@@ -129,14 +129,14 @@
   opacity: 0.7;
 }
 
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 425px) {
   .login-form__link {
     font-size: 12px;
     line-height: 14.52px;
   }
 }
 
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 425px) {
   .login-form__logo {
     align-self: center;
   }
@@ -149,7 +149,7 @@
   margin-top: 17px;
 }
 
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 425px) {
   .login-form__login-block {
     margin-top: 14px;
   }

@@ -43,7 +43,7 @@
   }
 }
 
-.not-fount__previose {
+.not-found__previose {
   font-weight: 400;
   font-size: 14px;
   line-height: 17px;
@@ -55,7 +55,7 @@
 }
 
 @media screen and (max-width: 320px) {
-  .not-fount__previose {
+  .not-found__previose {
     font-size: 12px;
     line-height: 14.52px;
     margin: 284px 0 0 0;

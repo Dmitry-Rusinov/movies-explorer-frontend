@@ -9,7 +9,7 @@ export default function FilterCheckbox() {
     <label className="checkbox">
       <input type="checkbox" onChange={alert} />
       <span className="checkbox-switch"></span>
-      <label className="checkbox__name">Короткометражки</label>
+      <p className="checkbox__name">Короткометражки</p>
     </label>
   );
 }

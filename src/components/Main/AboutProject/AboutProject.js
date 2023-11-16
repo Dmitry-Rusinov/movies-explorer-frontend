@@ -3,8 +3,8 @@ import "./AboutProject.css";
 
 export default function AboutProject() {
   return (
-    <section className="about-project" id="about-project">
-      <h2 className="about-project__text">О проекте</h2>
+    <article className="about-project" id="about-project">
+      <h3 className="about-project__text">О проекте</h3>
       <span className="about-project__line"></span>
       <ul className="about-project__info">
         <li className="about-project__info-title">
@@ -25,23 +25,23 @@ export default function AboutProject() {
       <div className="about-project__duration">
         <div className="about-project__duration-backend">
           <div className="about-project__duration-course">
-            <span className="about-project__duration-week">1 неделя</span>
+            <p className="about-project__duration-week">1 неделя</p>
           </div>
           <div className="about-project__duration-course-name">
-            <span className="about-project__course-name">Back-end</span>
+            <p className="about-project__course-name">Back-end</p>
           </div>
         </div>
         <div className="about-project__duration-frontend">
           <div className="about-project__duration-course_theme-light">
-            <span className="about-project__duration-week about-project__duration-week_theme-dark">
+            <p className="about-project__duration-week about-project__duration-week_theme-dark">
               4 недели
-            </span>
+            </p>
           </div>
           <div className="about-project__duration-course-name">
-            <span className="about-project__course-name">Front-end</span>
+            <p className="about-project__course-name">Front-end</p>
           </div>
         </div>
       </div>
-    </section>
+    </article>
   );
 }

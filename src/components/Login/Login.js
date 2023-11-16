@@ -22,21 +22,23 @@ export default function Login() {
         style={{ marginBottom: 158 }}
       >
         <label className="login-form__input">
-          <p className="login-form__input-name">E-mail</p>
+          <span className="login-form__input-name">E-mail</span>
           <input
             className="login-form__input-value"
             type="text"
             value={user.email}
+            placeholder="xxx@xxx.com"
             required
           />
           <span className="login-form__error">какая то ошибка</span>
         </label>
         <label className="login-form__input">
-          <p className="login-form__input-name">Пароль</p>
+          <span className="login-form__input-name">Пароль</span>
           <input
             className="login-form__input-value"
             type="text"
             value={[]}
+            placeholder="xxxxxxxx"
             required
           />
           <span className="login-form__error"></span>

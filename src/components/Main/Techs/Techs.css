@@ -115,7 +115,7 @@
   padding: 0;
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 840px) {
   .techs__technology-list {
     margin: 84px auto 0;
     grid-template-columns: repeat(7, 84px);
@@ -148,7 +148,7 @@
   justify-content: center;
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 840px) {
   .techs__technology {
     width: 84px;
     height: 57px;

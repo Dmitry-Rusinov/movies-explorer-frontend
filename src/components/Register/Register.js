@@ -19,31 +19,34 @@ export default function Register() {
       <h4 className="register-form__greeting">Добро пожаловать!</h4>
       <fieldset className="register-form__input-container">
         <label className="register-form__input">
-          <p className="register-form__input-name">Имя</p>
+          <span className="register-form__input-name">Имя</span>
           <input
             className="register-form__input-value"
             type="text"
             value={user.name}
+            placeholder="Джон Сноу"
             required
           />
           <span className="register-form__error"></span>
         </label>
         <label className="register-form__input">
-          <p className="register-form__input-name">E-mail</p>
+          <span className="register-form__input-name">E-mail</span>
           <input
             className="register-form__input-value"
             type="text"
             value={user.email}
+            placeholder="xxx@xxx.com"
             required
           />
           <span className="register-form__error"></span>
         </label>
         <label className="register-form__input">
-          <p className="register-form__input-name">Пароль</p>
+          <span className="register-form__input-name">Пароль</span>
           <input
             className="register-form__input-value"
             type="text"
-            value={"••••••••••••••"}
+            value={[]}
+            placeholder="xxxxxxxx"
             required
           />
           <span className="register-form__error">Что-то пошло не так...</span>
