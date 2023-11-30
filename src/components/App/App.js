@@ -120,9 +120,6 @@ function App() {
   };
 
   useEffect(() => {
-    /* if(loggedIn) {
-      tokenCheck();
-    } */
     tokenCheck();
   }, []);
 
