@@ -9,7 +9,7 @@ import Footer from "../Footer/Footer";
 export default function Main({ loggedIn }) {
   return (
     <main>
-      <Promo loggedIn={!loggedIn} />
+      <Promo loggedIn={loggedIn} />
       <NavTab />
       <AboutProject />
       <Techs />

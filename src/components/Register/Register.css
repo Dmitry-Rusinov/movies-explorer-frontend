@@ -1,7 +1,7 @@
 .register-form {
   display: flex;
   flex-direction: column;
-  margin: 70px auto;
+  margin: 46px auto;
   width: 396px;
   border: none;
 }
@@ -79,10 +79,6 @@
   border-radius: 8px;
 }
 
-.register-form__input-value:active {
-  color: red;
-}
-
 .register-form__error {
   color: #ff4062;
   font-weight: 400;
@@ -90,7 +86,7 @@
   line-height: 12px;
   margin: 8px 0 0 0;
   padding: 0;
-  height: 12px;
+  height: 24px;
 }
 
 @media screen and (max-width: 425px) {
@@ -114,7 +110,12 @@
   line-height: 17px;
   margin: 0;
   padding: 0;
-  transition: opacity 0.6s;
+  transition: ease 0.6s;
+}
+
+.register-form__button:disabled {
+  background-color: #e5e5e5;
+  cursor: default;
 }
 
 .register-form__button:hover {
