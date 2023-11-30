@@ -28,7 +28,6 @@ export default function MoviesCard({
   };
 
   const handleClickButtonDelete = () => {
-    console.log(movie._id);
     onDeleteMovies(movie._id);
     setIsCardSaved(false);
   };

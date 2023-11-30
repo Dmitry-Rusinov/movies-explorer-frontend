@@ -112,10 +112,6 @@ export const deleteMovie = (cardId) => {
   return fetch(`${BASE_URL}/movies/${cardId}`, {
     method: "DELETE",
     credentials: "include",
-    /* headers: {
-      "Accept": "application/json",
-      "Content-Type": "application/json",
-    }, */
   }).then(checkResponse);
 };
 

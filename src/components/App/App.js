@@ -60,9 +60,7 @@ function App() {
   //проверяем успешна регистрация или нет
   const handleAutorization = (email, password) => {
     authorize(email, password)
-      .then((data) => {
-        /* tokenCheck(); */
-        console.log(data);
+      .then(() => {
         setLoggedIn(true);
         Promise.all([getInfoByCurrentUser(), getSaveMoviesList()])
           .then(([user, saveMovieList]) => {
@@ -122,11 +120,11 @@ function App() {
   };
 
   useEffect(() => {
-    if(loggedIn) {
+    /* if(loggedIn) {
       tokenCheck();
-    }
-    
-  }, [loggedIn]);
+    } */
+    tokenCheck();
+  }, []);
 
   //открываем попап-уведомление
   const handleInfoTooltipClick = () => {
@@ -168,7 +166,6 @@ function App() {
   const handleSaveMovies = (movie) => {
     saveMovie(movie)
       .then((data) => {
-        console.log(data);
         setSaveMovies((saveMovieList) => [...saveMovieList, data]);
         localStorage.setItem(
           "saveMovieList",
