@@ -96,7 +96,8 @@ function App() {
   };
 
   //проверяем есть ли токен у пользователя при загрузке страницы
-  const tokenCheck = () => {
+  useEffect(() => {
+    const tokenCheck = () => {
     if (localStorage.getItem("userId")) {
       const token = localStorage.getItem("userId");
       if (token) {
@@ -108,20 +109,26 @@ function App() {
             }
           })
           .catch((err) => console.log(`Ошибка: ${err}`));
-        getSaveMoviesList().then((data) => {
+        getSaveMoviesList()
+        .then((data) => {
           localStorage.setItem("saveMovieList", JSON.stringify(data));
           setSaveMovies(data);
-        });
+        })
+        .catch((err) => console.log(`Ошибка: ${err}`));
         navigate(location.pathname);
       } else {
         navigate("/");
       }
     }
   };
+  tokenCheck()
 
-  useEffect(() => {
+  }, [])
+  
+
+ /*  useEffect(() => {
     tokenCheck();
-  }, []);
+  }, [!loggedIn]); */
 
   //открываем попап-уведомление
   const handleInfoTooltipClick = () => {

@@ -22,16 +22,12 @@ export default function Login({ handleLogin, message, loggedIn }) {
       onChange={handleChange}
       className="login-form"
     >
-      <img
-        alt="Логотип"
-        src={headerLogo}
-        style={{ width: 38 }}
-        className="login-form__logo"
-      />
+      <Link to="/">
+        <img alt="Логотип" src={headerLogo} style={{ width: 38 }} className="login-form__logo" />
+      </Link>
       <h4 className="login-form__greeting">Рады видеть!</h4>
       <fieldset
         className="login-form__input-container"
-        style={{ marginBottom: 158 }}
       >
         <label className="login-form__input">
           <span className="login-form__input-name">E-mail</span>
@@ -53,7 +49,7 @@ export default function Login({ handleLogin, message, loggedIn }) {
           <span className="login-form__input-name">Пароль</span>
           <input
             className="login-form__input-value"
-            type="text"
+            type="password"
             id="user-password"
             minLength="4"
             maxLength="12"

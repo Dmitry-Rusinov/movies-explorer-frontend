@@ -43,7 +43,7 @@
 .register-form__input-container {
   display: flex;
   flex-direction: column;
-  margin: 0 0 70px;
+  margin: 0 0 2px;
   padding: 0;
   border: none;
 }

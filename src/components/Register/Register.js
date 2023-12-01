@@ -24,12 +24,9 @@ export default function Register({ onRegister, message, loggedIn }) {
       onSubmit={handleSubmit}
       onChange={handleChange}
     >
-      <img
-        alt="Логотип"
-        src={headerLogo}
-        style={{ width: 38 }}
-        className="register-form__logo"
-      />
+      <Link to="/" style={{ listStyle: "none" }}>
+        <img alt="Логотип" src={headerLogo} style={{ width: 38 }} className="register-form__logo" />
+      </Link>
       <h4 className="register-form__greeting">Добро пожаловать!</h4>
       <fieldset className="register-form__input-container">
         <label className="register-form__input">
@@ -68,7 +65,7 @@ export default function Register({ onRegister, message, loggedIn }) {
           <span className="register-form__input-name">Пароль</span>
           <input
             className="register-form__input-value"
-            type="text"
+            type="password"
             minLength="4"
             maxLength="12"
             name="password"
