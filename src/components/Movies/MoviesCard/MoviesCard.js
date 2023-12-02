@@ -1,6 +1,6 @@
 import { useState } from "react";
 import "./MoviesCard.css";
-import { useLocation } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import convertMinutesToHourse from "../../../utils/ConvertMinutesToHours";
 
 export default function MoviesCard({
@@ -12,15 +12,6 @@ export default function MoviesCard({
 }) {
   const location = useLocation();
   const [isCardSaved, setIsCardSaved] = useState(true);
-
-  const handleShowTrailer = () => {
-    const cardPicture = document.querySelectorAll(".card__picture");
-    cardPicture.forEach((img) => {
-      img.addEventListener("click", () => {
-        window.open(movie.trailerLink);
-      });
-    });
-  };
 
   const handleClickButtonSave = () => {
     onSaveMovies(movie);
@@ -38,6 +29,7 @@ export default function MoviesCard({
 
   return (
     <section className="card">
+      <Link to={movie.trailerLink} style={{textDecoration: "none"}} target="_blank" rel="noreferrer">
       <img
         src={
           location.pathname === "/movies"
@@ -46,8 +38,8 @@ export default function MoviesCard({
         }
         alt={movie.nameRU || movie.nameEN}
         className="card__picture"
-        onClick={handleShowTrailer}
       />
+      </Link>
       {location.pathname === "/movies" && checkMovieID && isCardSaved ? (
         <button
           type="button"

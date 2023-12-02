@@ -79,7 +79,7 @@ export const setUserInfo = (data) => {
       name: data.name,
       email: data.email,
     }),
-  }).then(checkResponse);
+  }).then(checkResponse)
 };
 
 //запрос на сохранение фильма

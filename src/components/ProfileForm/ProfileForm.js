@@ -11,8 +11,9 @@ export default function ProfileForm({ onSignOut, onUpdateUser }) {
   const currentUser = useContext(CurrentUserContext);
 
   useEffect(() => {
+    
     currentUser ? resetForm(currentUser) : resetForm();
-  }, [currentUser]);
+  }, [currentUser, isEdit]);
 
   function handleSubmit(e) {
     e.preventDefault();

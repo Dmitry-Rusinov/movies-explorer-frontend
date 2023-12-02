@@ -27,6 +27,8 @@
   object-fit: cover;
   border-radius: 6px;
   text-decoration-line: none;
+  background-position: center;
+  width: 100%;
 }
 
 .card__picture:hover {
@@ -139,7 +141,7 @@
 .card__container {
   display: flex;
   justify-content: space-between;
-  margin: 15px 13px;
+  margin: 10px 13px;
   align-items: center;
 }
 

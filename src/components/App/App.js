@@ -45,7 +45,7 @@ function App() {
   const checkRegistration = ({ name, email, password }) => {
     register({ name, email, password })
       .then(() => {
-        handleAutorization(email, password)
+        handleAutorization(email, password);
         })
       .catch((err) => {
         console.log(`Ошибка: ${err}`);
@@ -96,7 +96,6 @@ function App() {
   };
 
   //проверяем есть ли токен у пользователя при загрузке страницы
-  useEffect(() => {
     const tokenCheck = () => {
     if (localStorage.getItem("userId")) {
       const token = localStorage.getItem("userId");
@@ -121,14 +120,10 @@ function App() {
       }
     }
   };
-  tokenCheck()
-
-  }, [])
   
-
- /*  useEffect(() => {
+  useEffect(() => {
     tokenCheck();
-  }, [!loggedIn]); */
+  }, []);
 
   //открываем попап-уведомление
   const handleInfoTooltipClick = () => {
@@ -151,6 +146,7 @@ function App() {
   const handleUpdateUser = (userData) => {
     setUserInfo(userData)
       .then((data) => {
+        setIsConfirm(true);
         setCurrentUser(data);
         handleMessage("Даные успешно изменены");
         handleInfoTooltipClick();
