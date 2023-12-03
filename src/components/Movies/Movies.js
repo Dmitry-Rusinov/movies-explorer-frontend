@@ -16,19 +16,17 @@ export default function Movies({
   saveMoviesList,
   onDeleteMovies,
   onChangeSaveButton,
-  checkFilterMovie,
   checkBox,
-  filterMovies,
+  checkBoxStatus
 }) {
   return (
     <section className="movies">
       <Header loggedIn={loggedIn} />
       <SearchForm
-        movies={movies}
         checkBox={checkBox}
         onSearch={onSearch}
         movieReq={movieReq}
-        checkFilterMovie={checkFilterMovie}
+        checkBoxStatus={checkBoxStatus}
       />
       {isLoading ? (
         <Preloader />
@@ -39,8 +37,6 @@ export default function Movies({
           saveMoviesList={saveMoviesList}
           onDeleteMovies={onDeleteMovies}
           onChangeSaveButton={onChangeSaveButton}
-          filterMovies={filterMovies}
-          checkBox={checkBox}
         />
       )}
       <span className="movies__user-notification">{userNotification}</span>

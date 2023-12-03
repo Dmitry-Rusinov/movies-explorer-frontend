@@ -7,15 +7,20 @@ import { useLocation } from "react-router-dom";
 export default function SearchForm({
   onSearch,
   movieReq,
-  movies,
   checkBox,
-  checkFilterMovie,
-  saveMoviesList,
+  checkBoxStatus
 }) {
   const { values, handleChange } = useFormValidation();
   const location = useLocation();
 
-  const handleSubmit = (e) => {
+
+  const handleSubmitMoviesPage = (e) => {
+    e.preventDefault();
+    movieReq = values.movie;
+    onSearch(movieReq, checkBox);
+  };
+
+  const handleSubmitSaveMoviesPage = (e) => {
     e.preventDefault();
     movieReq = values.movie;
     onSearch(movieReq, checkBox);
@@ -31,7 +36,7 @@ export default function SearchForm({
         <section className="search">
           <form
             className="search__form"
-            onSubmit={handleSubmit}
+            onSubmit={handleSubmitMoviesPage}
             onChange={handleChange}
           >
             <span className="search__icon"></span>
@@ -45,16 +50,14 @@ export default function SearchForm({
               onChange={handleChange}
             />
             <div className="search__block">
-              <button type="submit" className="search__submit">
+              <button type="submit"  className="search__submit">
                 Найти
               </button>
             </div>
           </form>
           <FilterCheckbox
             checkBox={checkBox}
-            movies={movies}
-            checkFilterMovie={checkFilterMovie}
-            saveMoviesList={saveMoviesList}
+            checkBoxStatus={checkBoxStatus}
           />
         </section>
       )}
@@ -62,7 +65,7 @@ export default function SearchForm({
         <section className="search">
           <form
             className="search__form"
-            onSubmit={handleSubmit}
+            onSubmit={handleSubmitSaveMoviesPage}
             onChange={handleChange}
           >
             <span className="search__icon"></span>
@@ -83,9 +86,7 @@ export default function SearchForm({
           </form>
           <FilterCheckbox
             checkBox={checkBox}
-            movies={movies}
-            checkFilterMovie={checkFilterMovie}
-            saveMoviesList={saveMoviesList}
+            checkBoxStatus={checkBoxStatus}
           />
         </section>
       )}

@@ -39,14 +39,13 @@ function App() {
   const [isLoading, setIsLoading] = useState(false); //стейт ожидания ответа от сервера
   const [movieReq, setMovieReq] = useState(""); //стейт текущего поискового запроса
   const [checkBox, setCheckBox] = useState(false); //стейт состояния чекбокса
-  const [filterMovies, setFilterMovies] = useState([]); //стейт массива отфильтрованных фильмов
 
   //проверка регистрации пользователя
   const checkRegistration = ({ name, email, password }) => {
     register({ name, email, password })
       .then(() => {
         handleAutorization(email, password);
-        })
+      })
       .catch((err) => {
         console.log(`Ошибка: ${err}`);
         handleMessage(`${err}, Что-то пошло не так...`);
@@ -74,7 +73,6 @@ function App() {
           .catch((err) => console.log(err));
         handleMessage("");
         setIsLoading(false);
-        localStorage.setItem('checkbox', checkBox)
         navigate("/movies", { replace: true });
       })
       .catch((err) => {
@@ -96,7 +94,7 @@ function App() {
   };
 
   //проверяем есть ли токен у пользователя при загрузке страницы
-    const tokenCheck = () => {
+  const tokenCheck = () => {
     if (localStorage.getItem("userId")) {
       const token = localStorage.getItem("userId");
       if (token) {
@@ -109,18 +107,18 @@ function App() {
           })
           .catch((err) => console.log(`Ошибка: ${err}`));
         getSaveMoviesList()
-        .then((data) => {
-          localStorage.setItem("saveMovieList", JSON.stringify(data));
-          setSaveMovies(data);
-        })
-        .catch((err) => console.log(`Ошибка: ${err}`));
+          .then((data) => {
+            localStorage.setItem("saveMovieList", JSON.stringify(data));
+            setSaveMovies(data);
+          })
+          .catch((err) => console.log(`Ошибка: ${err}`));
         navigate(location.pathname);
       } else {
         navigate("/");
       }
     }
   };
-  
+
   useEffect(() => {
     tokenCheck();
   }, []);
@@ -206,6 +204,14 @@ function App() {
     }
   };
 
+  //изменяем состояние чекбокса
+  const handleChangeCheckboxStatus = () => {
+    setCheckBox(!checkBox);
+    if (location.pathname === "/movies") {
+      localStorage.setItem("checkbox", !checkBox);
+    }
+  };
+
   //поиск фильмов в массиве по запросу пользователя
   const handleSearchResult = (request, data) => {
     let searchResult = data
@@ -219,105 +225,99 @@ function App() {
     return searchResult;
   };
 
+  //фильтруем фильмы по продолжительности
+  const handleFilterMovies = (data) => {
+    return data.filter((movie) => movie.duration <= 40);
+  };
+
   //ищем фильмы по запросу на главной странице
   const handleSearchMoviesPage = (search) => {
     setIsLoading(true);
     setUserNotification("");
-    if (location.pathname === "/movies") {
-      getMoviesList()
-        .then((data) => {
-          let result = handleSearchResult(search, data);
-          if (result.length === 0) {
-            setUserNotification("Ничего не найдено");
-            setMovies([]);
-          } else {
-            setMovies(result);
-            setMovieReq(search);
-            localStorage.setItem("moviesList", JSON.stringify(result));
-            localStorage.setItem("request", search);
-          }
-        })
-        .catch((err) => {
-          console.log(err);
-          setUserNotification(
-            "Во время запроса произошла ошибка. Возможно, проблема с соединением или сервер недоступен. Подождите немного и попробуйте ещё раз"
-          );
-        })
-        .finally(() => {
-          setIsLoading(false);
-        });
-    }
+    getMoviesList()
+      .then((data) => {
+        let result = handleSearchResult(search, data);
+        let filterArray = handleFilterMovies(result);
+        if (result.length === 0) {
+          setUserNotification("Ничего не найдено");
+          setMovies([]);
+        } else if (checkBox) {
+          setMovies(filterArray);
+          setMovieReq(search);
+          localStorage.setItem("moviesList", JSON.stringify(filterArray));
+          localStorage.setItem("request", search);
+        } else {
+          setMovies(result);
+          setMovieReq(search);
+          localStorage.setItem("moviesList", JSON.stringify(result));
+          localStorage.setItem("request", search);
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+        setUserNotification(
+          "Во время запроса произошла ошибка. Возможно, проблема с соединением или сервер недоступен. Подождите немного и попробуйте ещё раз"
+        );
+      })
+      .finally(() => {
+        setIsLoading(false);
+      });
   };
 
   //ищем фильмы по запросу на странице сохраненных фильмов
   const handleSearchSaveMoviesPage = (search) => {
-    if (location.pathname === "/saved-movies") {
-      setIsLoading(true);
-      getSaveMoviesList()
-        .then((data) => {
-          let result = handleSearchResult(search, data);
-          if (result.length === 0) {
-            setIsConfirm(false);
-            handleMessage("Ничего не найдено");
-            handleInfoTooltipClick();
-            closeInfoTooltipPopup();
-          } else {
-            setSaveMovies(result);
-            setMovieReq(search);
-          }
-        })
-        .catch((err) => console.log(err))
-        .finally(() => {
-          setIsLoading(false);
-        });
-    }
-  };
-
-  //фильтруем фильмы по продолжительности
-  const handleFilterMovies = (data, checked) => {
-    checked = localStorage.getItem("checkbox");
-    let filterArray = data.filter((movie) => movie.duration <= 40);
-    if (checked) {
-      setCheckBox(!checkBox);
-      if (location.pathname === "/movies") {
-        setFilterMovies(filterArray);
-      }
-      if (location.pathname === "/saved-movies") {
-        setFilterMovies(filterArray);
-      }
-      localStorage.setItem("filterArray", JSON.stringify(filterArray));
-      localStorage.setItem("checkbox", !checkBox);
-      return filterArray;
-    } else {
-      localStorage.setItem("checkbox", checkBox);
-      return data;
-    }
+    setIsLoading(true);
+    getSaveMoviesList()
+      .then((data) => {
+        let result = handleSearchResult(search, data);
+        let filterArray = handleFilterMovies(result);
+        if (result.length === 0) {
+          setIsConfirm(false);
+          handleMessage("Ничего не найдено");
+          handleInfoTooltipClick();
+          closeInfoTooltipPopup();
+        } else if (checkBox) {
+          setSaveMovies(filterArray);
+          setMovieReq(search);
+        } else {
+          setSaveMovies(result);
+          setMovieReq(search);
+        }
+      })
+      .catch((err) => console.log(err))
+      .finally(() => {
+        setIsLoading(false);
+      });
   };
 
   useEffect(() => {
-    let request = localStorage.getItem("request");
-    if (!request) {
-      setUserNotification("");
-      return;
-    } else if (request) {
-      if (location.pathname === "/movies") {
-        handleSearchMoviesPage(request);
-        setMovieReq(request);
+    if (location.pathname === "/movies") {
+      if (localStorage.getItem("checkbox") === "true") {
+        setCheckBox(true);
       } else {
-        handleSearchSaveMoviesPage(request);
+        setCheckBox(false);
       }
+    } else {
+      setCheckBox(false);
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [location]);
 
   useEffect(() => {
-    let saveMoviesList = JSON.parse(localStorage.getItem("saveMovieList"));
-    if (saveMoviesList) {
-      setSaveMovies(saveMoviesList);
-    } else {
+    let request = localStorage.getItem("request");
+    let saveMovieList = JSON.parse(localStorage.getItem("saveMovieList"));
+    let moviesList = JSON.parse(localStorage.getItem("moviesList"));
+    if (!request) {
+      setUserNotification("");
       return;
+    } 
+    if (location.pathname === "/movies") {
+      setMovieReq(request);
+      setMovies(moviesList);
     }
-  }, []);
+    if (location.pathname === "saved-movies") {
+      setSaveMovies(saveMovieList);
+    }
+  }, [location]);
 
   return (
     <CurrentUserContext.Provider value={currentUser}>
@@ -361,9 +361,8 @@ function App() {
                   onDeleteMovies={handleDeleteMovies}
                   saveMoviesList={saveMovies}
                   onChangeSaveButton={handleChangeButtonSave}
-                  checkFilterMovie={handleFilterMovies}
                   checkBox={checkBox}
-                  filterMovies={filterMovies}
+                  checkBoxStatus={handleChangeCheckboxStatus}
                 />
               }
             />
@@ -379,9 +378,8 @@ function App() {
                   onDeleteMovies={handleDeleteMovies}
                   movies={movies}
                   movieReq={movieReq}
-                  checkFilterMovie={handleFilterMovies}
-                  filterMovies={filterMovies}
                   checkBox={checkBox}
+                  checkBoxStatus={handleChangeCheckboxStatus}
                 />
               }
             />

@@ -14,9 +14,8 @@ export default function SavedMovies({
   movies,
   movieReq,
   onDeleteMovies,
-  checkFilterMovie,
-  filterMovies,
   checkBox,
+  checkBoxStatus
 }) {
   return (
     <section className="saved-movies">
@@ -24,9 +23,8 @@ export default function SavedMovies({
       <SeachForm
         onSearch={onSearch}
         movieReq={movieReq}
-        checkFilterMovie={checkFilterMovie}
-        saveMoviesList={saveMoviesList}
         checkBox={checkBox}
+        checkBoxStatus={checkBoxStatus}
       />
       {isLoading ? (
         <Preloader />
@@ -35,8 +33,6 @@ export default function SavedMovies({
           movies={movies}
           saveMoviesList={saveMoviesList}
           onDeleteMovies={onDeleteMovies}
-          filterMovies={filterMovies}
-          checkBox={checkBox}
         />
       )}
       <div className="saved-movies__block"></div>

@@ -6,17 +6,15 @@ import { useLocation } from "react-router-dom";
 
 export default function MoviesCardList({
   movies,
-  filterMovies,
   onSaveMovies,
   saveMoviesList,
   onDeleteMovies,
   onChangeSaveButton,
-  checkBox,
 }) {
   const { width, isScreenLg, isScreenMd, isScreenSm } = useResize();
   const [moviesQty, setMoviesQty] = useState(movies);
   const location = useLocation();
-  let moviesListChanged = movies.length <= moviesQty.length;
+  let moviesListChanged = (movies.length <= moviesQty.length);
 
   const handleChange = () => {
     if (width > isScreenLg) {
@@ -47,41 +45,21 @@ export default function MoviesCardList({
   return (
     <section className="movies__list">
       <ul className="movies__container">
-        {location.pathname === "/movies"
-          ? (location.pathname === "/movies" && !checkBox
-              ? moviesQty
-              : filterMovies
-            ).map((data) => {
-              return (
-                <li key={data.id}>
-                  <MoviesCard
-                    movie={data}
-                    onSaveMovies={onSaveMovies}
-                    onDeleteMovies={onDeleteMovies}
-                    saveMoviesList={saveMoviesList}
-                    checkMovieID={checkingCardSave(saveMoviesList, data)}
-                    moviesQty={moviesQty}
-                    onChangeSaveButton={onChangeSaveButton}
-                  />
-                </li>
-              );
-            })
-          : (location.pathname === "/saved-movies" && !checkBox
-              ? saveMoviesList
-              : filterMovies
-            ).map((data) => {
-              return (
-                <li key={data.movieId}>
-                  <MoviesCard
-                    movie={data}
-                    onSaveMovies={onSaveMovies}
-                    saveMoviesList={saveMoviesList}
-                    onDeleteMovies={onDeleteMovies}
-                    checkMovieID={checkingCardSave}
-                  />
-                </li>
-              );
-            })}
+        {(location.pathname === "/movies" ? moviesQty : saveMoviesList).map(
+          (data) => {
+            return (
+              <li key={moviesQty ? data.id : data.movieId}>
+                <MoviesCard
+                  movie={data}
+                  onSaveMovies={onSaveMovies}
+                  onDeleteMovies={onDeleteMovies}
+                  checkMovieID={checkingCardSave(saveMoviesList, data)}
+                  onChangeSaveButton={onChangeSaveButton}
+                />
+              </li>
+            );
+          }
+        )}
       </ul>
       {location.pathname === "/movies" && (
         <div className="movies__block">
