@@ -20,12 +20,6 @@ export default function SearchForm({
     onSearch(movieReq, checkBox);
   };
 
-  const handleSubmitSaveMoviesPage = (e) => {
-    e.preventDefault();
-    movieReq = values.movie;
-    onSearch(movieReq, checkBox);
-  };
-
   useEffect(() => {
     values.movie = movieReq;
   }, [movieReq]);
@@ -65,7 +59,7 @@ export default function SearchForm({
         <section className="search">
           <form
             className="search__form"
-            onSubmit={handleSubmitSaveMoviesPage}
+            onSubmit={handleSubmitMoviesPage}
             onChange={handleChange}
           >
             <span className="search__icon"></span>

@@ -3,11 +3,11 @@ import "./FilterCheckbox.css";
 
 export default function FilterCheckbox({
   checkBox,
-  checkBoxStatus
+  checkBoxStatus,
 }) {
 
   const handleChange = () => {
-      checkBoxStatus()
+      checkBoxStatus();
   };
 
   return (

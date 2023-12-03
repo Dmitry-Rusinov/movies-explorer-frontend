@@ -207,9 +207,7 @@ function App() {
   //изменяем состояние чекбокса
   const handleChangeCheckboxStatus = () => {
     setCheckBox(!checkBox);
-    if (location.pathname === "/movies") {
-      localStorage.setItem("checkbox", !checkBox);
-    }
+    localStorage.setItem("checkbox", !checkBox);
   };
 
   //поиск фильмов в массиве по запросу пользователя
