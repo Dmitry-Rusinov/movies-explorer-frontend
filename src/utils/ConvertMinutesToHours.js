@@ -1,6 +1,8 @@
+import { ONE_HOUR } from "./Const/Constants";
+
 export default function convertMinutesToHourse(totalMinutes) {
-  const minutes = totalMinutes % 60;
-  const hours = Math.floor(totalMinutes / 60);
+  const minutes = totalMinutes % ONE_HOUR;
+  const hours = Math.floor(totalMinutes / ONE_HOUR);
 
   return `${valueDigits(hours)}ч${valueDigits(minutes)}м`;
 }

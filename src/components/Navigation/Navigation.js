@@ -2,7 +2,7 @@ import React from "react";
 import { Link, Route, Routes } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 import "./Navigation.css";
-import { SCREEN_MD } from "../../utils/Const/ScreenWidth";
+import { SCREEN_MD } from "../../utils/Const/Constants";
 
 export default function Navigation({ loggedIn, onSignOut }) {
   const location = useLocation().pathname;

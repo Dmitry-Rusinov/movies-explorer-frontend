@@ -25,6 +25,8 @@ import {
 
 import { getMoviesList } from "../../utils/MoviesApi";
 
+import { SHORT_MOVIE_DURATION } from "../../utils/Const/Constants";
+
 function App() {
   const navigate = useNavigate();
   const location = useLocation();
@@ -225,7 +227,7 @@ function App() {
 
   //фильтруем фильмы по продолжительности
   const handleFilterMovies = (data) => {
-    return data.filter((movie) => movie.duration <= 40);
+    return data.filter((movie) => movie.duration <= SHORT_MOVIE_DURATION);
   };
 
   //ищем фильмы по запросу на главной странице

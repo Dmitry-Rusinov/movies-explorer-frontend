@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { SCREEN_SM, SCREEN_MD, SCREEN_LG, SCREEN_XSM } from "../Const/ScreenWidth";
+import { SCREEN_SM, SCREEN_MD, SCREEN_LG, SCREEN_XSM } from "../Const/Constants";
 
 export const useResize = () => {
   const [width, setWidth] = useState(window.innerWidth);

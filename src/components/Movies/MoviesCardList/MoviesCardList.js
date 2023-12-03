@@ -10,7 +10,7 @@ import {
   BIG_ADDITIONAL_ROW,
   SMALL_ADDITIONAL_ROW,
   PREV_MOVIES_QTY,
-} from "../../../utils/Const/ScreenWidth";
+} from "../../../utils/Const/Constants";
 
 export default function MoviesCardList({
   movies,

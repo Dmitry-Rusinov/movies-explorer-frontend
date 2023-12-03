@@ -10,3 +10,6 @@ export const SMALL_MOVIES_QTY = 5;
 
 export const BIG_ADDITIONAL_ROW = 3;
 export const SMALL_ADDITIONAL_ROW = 2;
+
+export const SHORT_MOVIE_DURATION = 40;
+export const ONE_HOUR = 60;
