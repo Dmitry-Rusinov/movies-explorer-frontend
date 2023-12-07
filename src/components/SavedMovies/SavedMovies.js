@@ -15,7 +15,8 @@ export default function SavedMovies({
   movieReq,
   onDeleteMovies,
   checkBox,
-  checkBoxStatus
+  checkBoxStatusSavedMovies,
+  onSearchSaveMovies
 }) {
   return (
     <section className="saved-movies">
@@ -24,7 +25,8 @@ export default function SavedMovies({
         onSearch={onSearch}
         movieReq={movieReq}
         checkBox={checkBox}
-        checkBoxStatus={checkBoxStatus}
+        checkBoxStatusSavedMovies={checkBoxStatusSavedMovies}
+        onSearchSaveMovies={onSearchSaveMovies}
       />
       {isLoading ? (
         <Preloader />

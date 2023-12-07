@@ -35,7 +35,7 @@ export default function Login({ handleLogin, message, loggedIn }) {
             className="login-form__input-value"
             type="email"
             id="user-email"
-            /* pattern={"^[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$"} */
+            pattern="[^@]+@[^@]+\.[a-zA-Z]{2,}"
             name="email"
             value={values.email || ""}
             onChange={handleChange}

@@ -72,6 +72,9 @@
   background-color: #f9f9f9;
   border-radius: 8px;
 }
+.login-form__input-value:invalid {
+  border: 1px solid red;
+}
 
 .login-form__error {
   color: #ff4062;

@@ -15,7 +15,7 @@ export const register = ({ name, email, password }) => {
     method: "POST",
     credentials: "include",
     headers: {
-      "Accept": "application/json",
+      Accept: "application/json",
       "Content-Type": "application/json",
     },
     body: JSON.stringify({ name, email, password }),
@@ -30,7 +30,7 @@ export const authorize = (email, password) => {
     method: "POST",
     credentials: "include",
     headers: {
-      "Accept": "application/json",
+      Accept: "application/json",
       "Content-Type": "application/json",
     },
     body: JSON.stringify({ email, password }),
@@ -48,7 +48,7 @@ export const logout = () => {
     method: "GET",
     credentials: "include",
     headers: {
-      "Accept": "application/json",
+      Accept: "application/json",
       "Content-Type": "application/json",
     },
   }).then(checkResponse);
@@ -60,7 +60,7 @@ export const getInfoByCurrentUser = () => {
     method: "GET",
     credentials: "include",
     headers: {
-      "Accept": "application/json",
+      Accept: "application/json",
       "Content-Type": "application/json",
     },
   }).then(checkResponse);
@@ -72,14 +72,14 @@ export const setUserInfo = (data) => {
     method: "PATCH",
     credentials: "include",
     headers: {
-      "Accept": "application/json",
+      Accept: "application/json",
       "Content-Type": "application/json",
     },
     body: JSON.stringify({
       name: data.name,
       email: data.email,
     }),
-  }).then(checkResponse)
+  }).then(checkResponse);
 };
 
 //запрос на сохранение фильма
@@ -88,7 +88,7 @@ export const saveMovie = (movie) => {
     method: "POST",
     credentials: "include",
     headers: {
-      "Accept": "application/json",
+      Accept: "application/json",
       "Content-Type": "application/json",
     },
     body: JSON.stringify({
@@ -121,7 +121,7 @@ export const getSaveMoviesList = () => {
     method: "GET",
     credentials: "include",
     headers: {
-      "Accept": "application/json",
+      Accept: "application/json",
       "Content-Type": "application/json",
     },
   }).then(checkResponse);

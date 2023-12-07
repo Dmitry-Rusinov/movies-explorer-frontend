@@ -8,11 +8,12 @@ export default function SearchForm({
   onSearch,
   movieReq,
   checkBox,
-  checkBoxStatus
+  checkBoxStatus,
+  checkBoxStatusSavedMovies,
+  onSearchSaveMovies
 }) {
   const { values, handleChange } = useFormValidation();
   const location = useLocation();
-
 
   const handleSubmitMoviesPage = (e) => {
     e.preventDefault();
@@ -20,9 +21,18 @@ export default function SearchForm({
     onSearch(movieReq, checkBox);
   };
 
+  const handleSubmitSavedMoviesPage = (e) => {
+    e.preventDefault();
+    movieReq = values.savedMovie;
+    onSearchSaveMovies(movieReq, checkBox);
+  };
+
   useEffect(() => {
-    values.movie = movieReq;
-  }, [movieReq]);
+    let movieReq = localStorage.getItem("request");
+    location.pathname === "/movies" 
+    ? values.movie = movieReq 
+    : values.movie = '';
+  }, [location]);
 
   return (
     <>
@@ -59,7 +69,7 @@ export default function SearchForm({
         <section className="search">
           <form
             className="search__form"
-            onSubmit={handleSubmitMoviesPage}
+            onSubmit={handleSubmitSavedMoviesPage}
             onChange={handleChange}
           >
             <span className="search__icon"></span>
@@ -68,8 +78,8 @@ export default function SearchForm({
               className="search__input"
               placeholder="Фильм"
               required
-              name="movie"
-              value={values.movie || ""}
+              name="savedMovie"
+              value={values.savedMovie || ""}
               onChange={handleChange}
             />
             <div className="search__block">
@@ -80,7 +90,7 @@ export default function SearchForm({
           </form>
           <FilterCheckbox
             checkBox={checkBox}
-            checkBoxStatus={checkBoxStatus}
+            checkBoxStatusSavedMovies={checkBoxStatusSavedMovies}
           />
         </section>
       )}

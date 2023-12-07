@@ -89,6 +89,7 @@ function App() {
     logout()
       .then(() => {
         localStorage.clear();
+        setMovies([]);
         setLoggedIn(false);
         navigate("/");
       })
@@ -212,6 +213,11 @@ function App() {
     localStorage.setItem("checkbox", !checkBox);
   };
 
+  //изменяем состояние чекбокса на странице сохраненные фильмы
+  const handleChangeCheckboxStatusSavedMovies = () => {
+    setCheckBox(!checkBox);
+  };
+
   //поиск фильмов в массиве по запросу пользователя
   const handleSearchResult = (request, data) => {
     let searchResult = data
@@ -231,7 +237,7 @@ function App() {
   };
 
   //ищем фильмы по запросу на главной странице
-  const handleSearchMoviesPage = (search) => {
+  const handleSearchMoviesPage = (search, checkBox) => {
     setIsLoading(true);
     setUserNotification("");
     getMoviesList()
@@ -265,7 +271,7 @@ function App() {
   };
 
   //ищем фильмы по запросу на странице сохраненных фильмов
-  const handleSearchSaveMoviesPage = (search) => {
+  const handleSearchSaveMoviesPage = (search, checkBox) => {
     setIsLoading(true);
     getSaveMoviesList()
       .then((data) => {
@@ -304,20 +310,31 @@ function App() {
 
   useEffect(() => {
     let request = localStorage.getItem("request");
-    let saveMovieList = JSON.parse(localStorage.getItem("saveMovieList"));
-    let moviesList = JSON.parse(localStorage.getItem("moviesList"));
     if (!request) {
       setUserNotification("");
       return;
     } 
     if (location.pathname === "/movies") {
-      setMovieReq(request);
+      handleSearchMoviesPage(request, checkBox)
+    }
+    if (location.pathname === "/saved-movies") {
+      handleSearchSaveMoviesPage(movieReq, checkBox)
+    }
+  }, [checkBox]);
+
+  useEffect(() => {
+    let saveMovieList = JSON.parse(localStorage.getItem("saveMovieList"));
+    let moviesList = JSON.parse(localStorage.getItem("moviesList"));
+    if (location.pathname === "/movies") {
       setMovies(moviesList);
     }
-    if (location.pathname === "saved-movies") {
+    if (location.pathname === "/saved-movies") {
+      console.log(movieReq);
+      setMovieReq('')
       setSaveMovies(saveMovieList);
     }
   }, [location]);
+
 
   return (
     <CurrentUserContext.Provider value={currentUser}>
@@ -374,12 +391,12 @@ function App() {
                   loggedIn={loggedIn}
                   saveMoviesList={saveMovies}
                   isLoading={isLoading}
-                  onSearch={handleSearchSaveMoviesPage}
+                  onSearchSaveMovies={handleSearchSaveMoviesPage}
                   onDeleteMovies={handleDeleteMovies}
                   movies={movies}
                   movieReq={movieReq}
                   checkBox={checkBox}
-                  checkBoxStatus={handleChangeCheckboxStatus}
+                  checkBoxStatusSavedMovies={handleChangeCheckboxStatusSavedMovies}
                 />
               }
             />
