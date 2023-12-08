@@ -7,10 +7,12 @@ import { useLocation } from "react-router-dom";
 export default function SearchForm({
   onSearch,
   movieReq,
+  saveMovieReq,
   checkBox,
   checkBoxStatus,
   checkBoxStatusSavedMovies,
-  onSearchSaveMovies
+  onSearchSaveMovies,
+  setUserNotification,
 }) {
   const { values, handleChange } = useFormValidation();
   const location = useLocation();
@@ -23,15 +25,31 @@ export default function SearchForm({
 
   const handleSubmitSavedMoviesPage = (e) => {
     e.preventDefault();
-    movieReq = values.savedMovie;
-    onSearchSaveMovies(movieReq, checkBox);
+    saveMovieReq = values.savedMovie;
+    onSearchSaveMovies(saveMovieReq, checkBox);
   };
 
   useEffect(() => {
-    let movieReq = localStorage.getItem("request");
-    location.pathname === "/movies" 
-    ? values.movie = movieReq 
-    : values.movie = '';
+    let request = localStorage.getItem("request");
+    if (!request && location.pathname === "/movies") {
+      setUserNotification("");
+      return;
+    }
+    if (location.pathname === "/movies") {
+      movieReq = values.movie || request;
+      onSearch(movieReq, checkBox);
+    }
+    if (location.pathname === "/saved-movies") {
+      saveMovieReq = values.savedMovie || "";
+      onSearchSaveMovies(saveMovieReq, checkBox);
+    }
+  }, [checkBox, location]);
+
+  useEffect(() => {
+    let request = localStorage.getItem("request");
+    location.pathname === "/movies"
+      ? (values.movie = request)
+      : (values.movie = "");
   }, [location]);
 
   return (
@@ -54,7 +72,7 @@ export default function SearchForm({
               onChange={handleChange}
             />
             <div className="search__block">
-              <button type="submit"  className="search__submit">
+              <button type="submit" className="search__submit">
                 Найти
               </button>
             </div>
@@ -62,6 +80,7 @@ export default function SearchForm({
           <FilterCheckbox
             checkBox={checkBox}
             checkBoxStatus={checkBoxStatus}
+            submitOnCheckbox={handleSubmitMoviesPage}
           />
         </section>
       )}
@@ -91,6 +110,7 @@ export default function SearchForm({
           <FilterCheckbox
             checkBox={checkBox}
             checkBoxStatusSavedMovies={checkBoxStatusSavedMovies}
+            submitOnCheckboxSavedMoviesPage={handleSubmitSavedMoviesPage}
           />
         </section>
       )}

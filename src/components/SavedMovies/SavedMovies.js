@@ -12,21 +12,23 @@ export default function SavedMovies({
   isLoading,
   onSearch,
   movies,
-  movieReq,
+  saveMovieReq,
   onDeleteMovies,
   checkBox,
   checkBoxStatusSavedMovies,
-  onSearchSaveMovies
+  onSearchSaveMovies,
+  setUserNotification
 }) {
   return (
     <section className="saved-movies">
       <Header loggedIn={loggedIn} />
       <SeachForm
         onSearch={onSearch}
-        movieReq={movieReq}
+        saveMovieReq={saveMovieReq}
         checkBox={checkBox}
         checkBoxStatusSavedMovies={checkBoxStatusSavedMovies}
         onSearchSaveMovies={onSearchSaveMovies}
+        setUserNotification={setUserNotification}
       />
       {isLoading ? (
         <Preloader />

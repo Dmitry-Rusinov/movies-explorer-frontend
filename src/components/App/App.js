@@ -39,7 +39,8 @@ function App() {
   const [movies, setMovies] = useState([]); //стейт фильмов главной страницы
   const [saveMovies, setSaveMovies] = useState([]); //стейт сохраненных фильмов
   const [isLoading, setIsLoading] = useState(false); //стейт ожидания ответа от сервера
-  const [movieReq, setMovieReq] = useState(""); //стейт текущего поискового запроса
+  const [movieReq, setMovieReq] = useState(""); //стейт текущего поискового запроса страницы фильмов
+  const [saveMovieReq, setSaveMovieReq] = useState(""); //стейт текущего поискового запроса страницы сохраненных фильмов
   const [checkBox, setCheckBox] = useState(false); //стейт состояния чекбокса
 
   //проверка регистрации пользователя
@@ -90,6 +91,7 @@ function App() {
       .then(() => {
         localStorage.clear();
         setMovies([]);
+        setUserNotification('');
         setLoggedIn(false);
         navigate("/");
       })
@@ -238,15 +240,25 @@ function App() {
 
   //ищем фильмы по запросу на главной странице
   const handleSearchMoviesPage = (search, checkBox) => {
+    let saveMovieList = JSON.parse(localStorage.getItem("saveMovieList"))
+    setSaveMovies(saveMovieList)
     setIsLoading(true);
     setUserNotification("");
     getMoviesList()
       .then((data) => {
         let result = handleSearchResult(search, data);
         let filterArray = handleFilterMovies(result);
-        if (result.length === 0) {
+        if (result.length === 0 && !checkBox) {
           setUserNotification("Ничего не найдено");
           setMovies([]);
+          localStorage.setItem("moviesList", JSON.stringify(filterArray));
+          localStorage.setItem("request", search);
+        } else if (checkBox && filterArray.length === 0) {
+          setUserNotification("Ничего не найдено");
+          setMovies([]);
+          setMovieReq(search);
+          localStorage.setItem("moviesList", JSON.stringify(filterArray));
+          localStorage.setItem("request", search);
         } else if (checkBox) {
           setMovies(filterArray);
           setMovieReq(search);
@@ -282,12 +294,20 @@ function App() {
           handleMessage("Ничего не найдено");
           handleInfoTooltipClick();
           closeInfoTooltipPopup();
-        } else if (checkBox) {
+        } else if (checkBox && filterArray.length === 0) {
+          setIsConfirm(false);
+          handleMessage("Ничего не найдено");
+          handleInfoTooltipClick();
+          closeInfoTooltipPopup();
+          setSaveMovies([]);
+          setSaveMovieReq(search);
+        }
+        else if (checkBox) {
           setSaveMovies(filterArray);
-          setMovieReq(search);
+          setSaveMovieReq(search);
         } else {
           setSaveMovies(result);
-          setMovieReq(search);
+          setSaveMovieReq(search);
         }
       })
       .catch((err) => console.log(err))
@@ -307,34 +327,6 @@ function App() {
       setCheckBox(false);
     }
   }, [location]);
-
-  useEffect(() => {
-    let request = localStorage.getItem("request");
-    if (!request) {
-      setUserNotification("");
-      return;
-    } 
-    if (location.pathname === "/movies") {
-      handleSearchMoviesPage(request, checkBox)
-    }
-    if (location.pathname === "/saved-movies") {
-      handleSearchSaveMoviesPage(movieReq, checkBox)
-    }
-  }, [checkBox]);
-
-  useEffect(() => {
-    let saveMovieList = JSON.parse(localStorage.getItem("saveMovieList"));
-    let moviesList = JSON.parse(localStorage.getItem("moviesList"));
-    if (location.pathname === "/movies") {
-      setMovies(moviesList);
-    }
-    if (location.pathname === "/saved-movies") {
-      console.log(movieReq);
-      setMovieReq('')
-      setSaveMovies(saveMovieList);
-    }
-  }, [location]);
-
 
   return (
     <CurrentUserContext.Provider value={currentUser}>
@@ -380,6 +372,7 @@ function App() {
                   onChangeSaveButton={handleChangeButtonSave}
                   checkBox={checkBox}
                   checkBoxStatus={handleChangeCheckboxStatus}
+                  setUserNotification={setUserNotification}
                 />
               }
             />
@@ -394,9 +387,12 @@ function App() {
                   onSearchSaveMovies={handleSearchSaveMoviesPage}
                   onDeleteMovies={handleDeleteMovies}
                   movies={movies}
-                  movieReq={movieReq}
+                  saveMovieReq={saveMovieReq}
                   checkBox={checkBox}
-                  checkBoxStatusSavedMovies={handleChangeCheckboxStatusSavedMovies}
+                  checkBoxStatusSavedMovies={
+                    handleChangeCheckboxStatusSavedMovies
+                  }
+                  setUserNotification={setUserNotification}
                 />
               }
             />

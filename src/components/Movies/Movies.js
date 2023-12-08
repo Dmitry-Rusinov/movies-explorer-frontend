@@ -17,7 +17,8 @@ export default function Movies({
   onDeleteMovies,
   onChangeSaveButton,
   checkBox,
-  checkBoxStatus
+  checkBoxStatus,
+  setUserNotification
 }) {
   return (
     <section className="movies">
@@ -27,6 +28,7 @@ export default function Movies({
         onSearch={onSearch}
         movieReq={movieReq}
         checkBoxStatus={checkBoxStatus}
+        setUserNotification={setUserNotification}
       />
       {isLoading ? (
         <Preloader />

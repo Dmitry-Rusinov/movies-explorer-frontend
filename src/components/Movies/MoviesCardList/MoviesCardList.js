@@ -59,7 +59,7 @@ export default function MoviesCardList({
         {(location.pathname === "/movies" ? moviesQty : saveMoviesList).map(
           (data) => {
             return (
-              <li key={/* moviesQty */location.pathname === "/movies" ? data.id : data.movieId}>
+              <li key={moviesQty ? data.id : data.movieId}>
                 <MoviesCard
                   movie={data}
                   onSaveMovies={onSaveMovies}
@@ -81,7 +81,7 @@ export default function MoviesCardList({
             onClick={handleChange}
           >
             Ещё
-          </button>{" "}
+          </button>
         </div>
       )}
     </section>

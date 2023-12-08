@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import "./FilterCheckbox.css";
 import { useLocation } from "react-router-dom";
 
@@ -6,10 +6,14 @@ export default function FilterCheckbox({
   checkBox,
   checkBoxStatus,
   checkBoxStatusSavedMovies,
+  submitOnCheckbox,
+  submitOnCheckboxSavedMoviesPage
 }) {
   const location = useLocation();
   const handleChange = () => {
-    location.pathname === "/movies" ? checkBoxStatus() : checkBoxStatusSavedMovies();
+    location.pathname === "/movies" 
+    ? checkBoxStatus() && submitOnCheckbox()
+    : checkBoxStatusSavedMovies() && submitOnCheckboxSavedMoviesPage()
   };
 
   return (
