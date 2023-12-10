@@ -3,7 +3,7 @@ import "./NotFoundError.css";
 import { Link } from "react-router-dom";
 
 export default function NotFoundError() {
-  const goToBack = () => window.history.back();
+  const goToBack = () => window.history.go(-3);
   return (
     <section className="not-found">
       <p className="not-found__error">404</p>

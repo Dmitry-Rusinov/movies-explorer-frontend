@@ -1,50 +1,68 @@
 import React from "react";
 import "./Login.css";
 import headerLogo from "../../images/headerLogo.svg";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { useFormValidation } from "../../utils/hooks/useFormValidation";
 
-export default function Login() {
-  const user = {
-    name: "Виталий",
-    email: "pochta@yandex.ru",
-  };
+export default function Login({ handleLogin, message, loggedIn }) {
+  const { errors, values, isValid, handleChange } = useFormValidation();
+  const navigate = useNavigate();
+
+  function handleSubmit(e) {
+    e.preventDefault();
+    if (!values.email || !values.password) {
+      return;
+    }
+    handleLogin(values.email, values.password);
+  }
   return (
-    <form className="login-form">
-      <img
-        alt="Логотип"
-        src={headerLogo}
-        style={{ width: 38 }}
-        className="login-form__logo"
-      />
+    <>
+    {!loggedIn ? (<form
+      onSubmit={handleSubmit}
+      onChange={handleChange}
+      className="login-form"
+    >
+      <Link to="/">
+        <img alt="Логотип" src={headerLogo} style={{ width: 38 }} className="login-form__logo" />
+      </Link>
       <h4 className="login-form__greeting">Рады видеть!</h4>
       <fieldset
         className="login-form__input-container"
-        style={{ marginBottom: 158 }}
       >
         <label className="login-form__input">
           <span className="login-form__input-name">E-mail</span>
           <input
             className="login-form__input-value"
-            type="text"
-            value={user.email}
+            type="email"
+            id="user-email"
+            pattern="[^@]+@[^@]+\.[a-zA-Z]{2,}"
+            name="email"
+            value={values.email || ""}
+            onChange={handleChange}
             placeholder="xxx@xxx.com"
             required
           />
-          <span className="login-form__error">какая то ошибка</span>
+          <span className="login-form__error">{errors.email}</span>
         </label>
         <label className="login-form__input">
           <span className="login-form__input-name">Пароль</span>
           <input
             className="login-form__input-value"
-            type="text"
-            value={[]}
-            placeholder="xxxxxxxx"
+            type="password"
+            id="user-password"
+            minLength="4"
+            maxLength="12"
+            name="password"
+            value={values.password || ""}
+            onChange={handleChange}
+            placeholder="Введите пароль"
             required
           />
-          <span className="login-form__error"></span>
+          <span className="login-form__error">{errors.password}</span>
         </label>
       </fieldset>
-      <button className="login-form__button" type="button">
+      <span className="login-form__error">{message}</span>
+      <button className="login-form__button" type="submit" disabled={!isValid}>
         Войти
       </button>
       <div className="login-form__login-block">
@@ -55,6 +73,7 @@ export default function Login() {
           Регистрация
         </Link>
       </div>
-    </form>
+    </form>) : navigate("/", { replace: true })}
+    </>
   );
 }
