@@ -1,9 +1,35 @@
 # Фронтенд дипломной работы курса Веб-разрабодчик Яндекс.Практикума
 
-#### Ссылка на макет 
+## MOVIES EXPLORER
 
+Многостраничное приложение, в котором можно найти фильмы по запросу и сохранить в личном кабинете.
+Приложение состоит из фронтенд и бэкенд частей.
+Ссылка на бэкенд https://github.com/Dmitry-Rusinov/movies-explorer-api
+
+****
+
+## Ссылка на вакет Figma
 [<img src="https://designpixels.nl/wp-content/uploads/2022/11/Figma.png" width="100"/>](https://www.figma.com/file/6FMWkB94wE7KTkcCgUXtnC/Дипломный-проект?type=design&node-id=1-3198&mode=design&t=w1vKZNJObFPdWkdB-0)
 
-#### Ссылка на пул реквест: https://github.com/Dmitry-Rusinov/movies-explorer-frontend/pull/2
+****
 
-#### Ссылка на проект: https://movie-service.nomoredomainsmonster.ru
+## Ссылка на пул реквест: https://github.com/Dmitry-Rusinov/movies-explorer-frontend/pull/2
+
+## Ссылка на проект: 
+https://movie-service.nomoredomainsmonster.ru (Истек срок размещения)
+
+## Функциональность
+* Лединг страница с информацией обо мне и используемых в работе технологиях.
+* Регистрация и авторизация пользователей
+* Валидация форм на стороне клиента
+* Поиск фильмов по запросу
+* Сохранение понравившихся фильмов в личном кабинете
+* Удаление фильмов из личного кабинета
+* Адаптивная верстка
+* Всплываюее окно с информацией о статусе запроса на сервер
+
+## Стек технологий
+* HTML, CSS, JavaScript, БЭМ, React Router, MongoDB
+* Валидация форм с помощью кастомного хука
+* Защищенные роуты
+* Хранение токена в куки
